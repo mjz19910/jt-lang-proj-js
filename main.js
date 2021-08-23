@@ -110,16 +110,16 @@ class Jam {
     }
 }
 function rust_new(val) {
-    let obj = new val;
-    if (obj.new) {
+    if (val.prototype.new) {
+        let obj=new val;
         obj.new();
+        return obj;
     } else {
         throw Error('Can\'t create new');
     }
 }
 function run(file_name) {
-    let engine = new Jam;
-    engine.new();
+    let engine = rust_new(Jam);
     let tok = engine.lex(fname);
     if (tok.iserr) return tok;
     let ast = engine.parse(tok);
@@ -158,17 +158,19 @@ class Ast {
     }
     /**@arg {[string,CallableFunction][]} mat*/
     match(mat) {
-        for (let i = 0; i < mat.length; i++) {
+        x:for (let i = 0; i < mat.length; i++) {
             let cur = mat[i];
             let mat_def = cur[0];
             let res = this.do_match(mat_def);
             if (res.matches) {
-                cur[1](...res.results);
+                return cur[1](...res.results);
             }
         }
+        throw Error('Match missing');
     }
     do_match(def) {
         console.log(def);
+        console.assert(false,'todo!()');
         return { matches: false };
     }
 };
