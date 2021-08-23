@@ -163,7 +163,8 @@ class Ast {
             let mat_def = cur[0];
             let res = this.do_match(mat_def);
             if (res.matches) {
-                return cur[1](...res.results);
+                let fn=cur[1];
+                return fn(...res.results);
             }
         }
         throw Error('Match missing');
