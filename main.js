@@ -176,3 +176,15 @@ class Ast {
     }
 };
 run("hello.jam");
+/*
+ *getEventListeners(document.querySelector(".quick-input-action>.monaco-button.monaco-text-button:not([title])")).click[0].listener({}); 
+ {let dbg=DebugAPI.the();dbg.attach(debug, undebug, getEventListeners);key_event_array=[];key_event_array[0]={keyCode:17,ctrlKey:true,shiftKey:false};key_event_array[1]={keyCode:16,ctrlKey:true,shiftKey:true};key_event_array[2]={keyCode:80,ctrlKey:true,shiftKey:true};[getEventListeners(window).keydown[0]].forEach(e=>{for(j of key_event_array)e.listener(j)});[getEventListeners(window).keyup[0]].forEach(e=>{for(j of key_event_array)e.listener(j)});await new Promise(a=>{setTimeout(a)});
+dbg.debuggerGetVar(dbg.getEventListeners(document.querySelector(".quick-input-action>.monaco-button.monaco-text-button:not([title])")).click[0].listener,{},[{}],"[this]");
+}
+function win_to_arr(win){let win_acc=new Proxy({length:win.length},{get(a,b,c){if(b===Symbol.iterator)return a[b];if(b==='length'){return a[b]};return win[b]}});return {...Array.from(win_acc),from:win,length:win_acc.length}}
+function get_par_id(win){return Array.from(win_to_arr(win.parent)).indexOf(win)}
+[,...Object.keys(Object.getOwnPropertyDescriptors(globalThis)).filter(e=>e.match(/^on/)).map(e=>e.slice(2)),,].join('","').slice(2,-2)
+[,Object.keys(Object.getOwnPropertyDescriptors(globalThis)).filter(e=>e.includes("HTML")),,].join(",").replace(/,/g,'","')
+{function x(v){return v()};1;try{x({})}catch(e){}}
+
+ */
